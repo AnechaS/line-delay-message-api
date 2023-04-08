@@ -1,5 +1,6 @@
 {
   "name": "line-delay-message-api",
+  "description": "Send a message to a Line user at a specific time in the future with a delay time and units of time.",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
