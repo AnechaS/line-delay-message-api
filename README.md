@@ -1,11 +1,13 @@
 # LINE delay message API
 
+The Line Delayed Message API allows you to send a message to a Line user at a specific time in the future, with the ability to specify a delay time and units of time
+
 ## APIs
 
 ### Send Delay Message
 
 ```bash
-curl --location "http://${YOURS_SERVER}/v1/send" \
+curl --location "https://line-delay-message-api.glitch.me/v1/send" \
 --header "X-Line-Access-Token: ${CHANNEL_ACCESS_TOKEN}" \
 --header "Content-Type: application/json" \
 --data '{
@@ -25,14 +27,14 @@ Time delay units (s = seconds, m = minutes, h = hours, [etc.](https://www.npmjs.
 ### Cancel
 
 ```bash
-curl --location "http://${YOURS_SERVER}/v1/cancel" \
+curl --location "https://line-delay-message-api.glitch.me/v1/cancel" \
 --header "Content-Type: application/json" \
 --data '{
     "messageId": "message id to cancel the sending of messages"
 }'
 ```
 
-## Developments
+## Development
 
 ### Installation
 
@@ -41,6 +43,7 @@ $ npm install
 ```
 
 ### Run
+
 ```bash
 $ npm start
 ```
@@ -50,4 +53,3 @@ $ npm start
 ```bash
 $ npm test
 ```
-
