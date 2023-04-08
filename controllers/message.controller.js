@@ -39,15 +39,17 @@ exports.send = function (req, res) {
             messages: body.messages,
           },
         })
-        .catch((error) => console.error('SendMessageError', error?.toJSON()))
-        .finally(() => !!body.delay && store.delete(messageId));
+        .catch((e) => e.toJSON && console.error('SendMessageError', e.toJSON()))
+        .finally(() => body.delay && store.delete(messageId));
     }, delay);
 
     store.set(messageId, timeout);
 
     res.json({ messageId });
   } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({ message: error.message });
+    res
+      .status(httpStatus.BAD_REQUEST)
+      .json({ message: error.message });
   }
 };
 
@@ -69,6 +71,8 @@ exports.cancel = function (req, res) {
 
     res.json({ result: true });
   } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({ message: error.message });
+    res
+      .status(httpStatus.BAD_REQUEST)
+      .json({ message: error.message });
   }
 };

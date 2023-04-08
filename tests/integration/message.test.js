@@ -401,7 +401,15 @@ describe('POST /send', () => {
           return this;
         },
         catch(cb) {
-          cb();
+          const error = new Error('Some error');
+          error.toJSON = function () {
+            return {
+              message: this.message,
+              status: 500,
+              config: {},
+            };
+          };
+          cb(error);
           return this;
         },
         finally: (cb) => cb(),
