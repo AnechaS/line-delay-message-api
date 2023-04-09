@@ -26,8 +26,6 @@ beforeEach(() => {
 afterEach(() => {
   jest.clearAllMocks();
   store.clear();
-  setTimeout.mockClear();
-  clearTimeout.mockClear();
 });
 
 describe('POST /send', () => {
